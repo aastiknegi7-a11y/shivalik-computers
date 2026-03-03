@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Developer Profile - Negiji01</title>
+
+<style>
+
+/* ===== RESET ===== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+/* ===== BODY ===== */
+body{
+background: linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#000428);
+background-size:400% 400%;
+animation: bg 12s ease infinite;
+color:white;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:30px;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container{
+max-width:1200px;
+width:100%;
+display:flex;
+gap:60px;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(15px);
+padding:50px;
+border-radius:20px;
+box-shadow:0 0 40px rgba(0,224,255,0.3);
+animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+/* ===== LEFT SIDE ===== */
+.left{
+flex:1;
+text-align:center;
+}
+
+.left img{
+width:260px;
+height:260px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid #00e0ff;
+box-shadow:0 0 40px #00e0ff;
+transition:0.4s;
+}
+
+.left img:hover{
+transform:scale(1.05);
+}
+
+.left h2{
+margin-top:20px;
+font-size:30px;
+}
+
+.referral-badge{
+margin-top:10px;
+display:inline-block;
+padding:8px 20px;
+background:#00e0ff;
+color:black;
+font-weight:bold;
+border-radius:20px;
+font-size:14px;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn{
+display:inline-block;
+margin-top:25px;
+padding:14px 30px;
+background:#25D366;
+color:white;
+text-decoration:none;
+border-radius:10px;
+font-weight:bold;
+transition:0.3s;
+box-shadow:0 0 15px #25D366;
+}
+
+.whatsapp-btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px #25D366;
+}
+
+/* ===== RIGHT SIDE ===== */
+.right{
+flex:1;
+}
+
+.right h1{
+font-size:42px;
+margin-bottom:20px;
+color:#00e0ff;
+}
+
+.right p{
+font-size:18px;
+line-height:1.8;
+opacity:0.9;
+margin-bottom:25px;
+}
+
+/* ===== STATS ===== */
+.stats{
+display:flex;
+gap:30px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.stat-box{
+flex:1;
+min-width:120px;
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:12px;
+text-align:center;
+transition:0.3s;
+}
+
+.stat-box:hover{
+transform:translateY(-5px);
+background:rgba(0,224,255,0.2);
+}
+
+.stat-box h3{
+font-size:28px;
+color:#00e0ff;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+.container{
+flex-direction:column;
+text-align:center;
+padding:30px;
+}
+
+.right h1{
+font-size:32px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="left">
+<img src="negi/negiji.jpg" alt="Developer Photo">
+
+<h2>Aastik Negi</h2>
+
+<div class="referral-badge">
+Referral Code: NEGJI01
+</div>
+
+<a href="https://wa.me/918791791884?text=Hi%20Negiji01,%20I%20want%20to%20get%20discount%20using%20your%20referral."
+class="whatsapp-btn" target="_blank">
+💬 Contact on WhatsApp
+</a>
+
+</div>
+
+<div class="right">
+
+<h1>About Me</h1>
+
+<p>
+Hello! I'm a passionate Web Developer and Digital Solutions Expert from Dehradun.
+I design modern, responsive and premium websites for businesses.
+
+I built Shivalik Computer’s digital platform including referral system,
+dashboard features and animated UI with mobile-first design.
+
+My mission is to help local businesses grow online with affordable and powerful web solutions.
+</p>
+
+<div class="stats">
+<div class="stat-box">
+<h3>50+</h3>
+<p>Projects</p>
+</div>
+
+<div class="stat-box">
+<h3>100+</h3>
+<p>Happy Clients</p>
+</div>
+
+<div class="stat-box">
+<h3>4+</h3>
+<p>Years Experience</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
