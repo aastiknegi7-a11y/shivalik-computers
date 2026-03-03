@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Shivalik Computer</title>
+
+<style>
+
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
+
+/* ===== BODY ===== */
+body{
+  min-height:100vh;
+  background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#000428);
+  background-size:400% 400%;
+  animation:bgMove 12s ease infinite;
+  color:white;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* ===== NAVBAR ===== */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 30px;
+  background:rgba(0,0,0,0.8);
+  flex-wrap:wrap;
+}
+
+nav h2{
+  font-size:20px;
+}
+
+nav ul{
+  display:flex;
+  list-style:none;
+  gap:20px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-size:15px;
+  transition:.3s;
+}
+
+nav a:hover{
+  color:#00ffff;
+}
+
+/* ===== SECTION ===== */
+section{
+  padding:60px 20px;
+  display:flex;
+  justify-content:center;
+}
+
+.container{
+  width:100%;
+  max-width:1000px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(30px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+/* ===== FORM CARD ===== */
+.form-card{
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  border-radius:18px;
+  padding:30px;
+}
+
+.form-card h2{
+  margin-bottom:20px;
+  text-align:center;
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+input, textarea{
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  outline:none;
+  font-size:15px;
+  width:100%;
+}
+
+input:focus, textarea:focus{
+  box-shadow:0 0 0 2px #00ffff;
+}
+
+textarea{
+  resize:none;
+  height:100px;
+}
+
+/* ===== BUTTON ===== */
+.submit{
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  background:#00ffff;
+  color:#000;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.submit:hover{
+  transform:scale(1.05);
+  background:#ffffff;
+}
+
+/* ===== INFO ===== */
+.info{
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  border-radius:18px;
+  padding:30px;
+}
+
+.info h3{
+  margin-bottom:15px;
+}
+
+.info p{
+  margin:10px 0;
+  font-size:15px;
+}
+
+/* ===== MAP ===== */
+iframe{
+  width:100%;
+  height:250px;
+  border:0;
+  border-radius:14px;
+  margin-top:15px;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:18px;
+  background:black;
+  font-size:14px;
+  margin-top:40px;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media(max-width:900px){
+  .container{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+
+  nav{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  nav ul{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .form-card,
+  .info{
+    padding:20px;
+  }
+
+  input, textarea{
+    font-size:16px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h2>Shivalik Computer</h2>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section>
+<div class="container">
+
+  <!-- CONTACT FORM -->
+  <div class="form-card">
+    <h2>Contact Us</h2>
+    <form onsubmit="sendWhatsApp(); return false;">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="tel" id="phone" placeholder="Mobile Number" required>
+      <textarea id="product" placeholder="Product Interested"></textarea>
+      <button class="submit">Send Enquiry</button>
+    </form>
+  </div>
+
+  <!-- INFO + MAP -->
+  <div class="info">
+    <h3>Our Location</h3>
+
+    <iframe 
+      src="https://www.google.com/maps?q=Shivalik%20Computer%20Dehradun&output=embed"
+      loading="lazy">
+    </iframe>
+
+    <p>📍 Barthwal Tower, Dehradun</p>
+    <p>📞 8791791884</p>
+  </div>
+
+</div>
+</section>
+
+<footer>
+© 2026 Shivalik Computer
+</footer>
+
+<script>
+function sendWhatsApp(){
+  const name=document.getElementById("name").value;
+  const phone=document.getElementById("phone").value;
+  const product=document.getElementById("product").value;
+
+  const msg=`Hello Shivalik Computer,%0AName: ${name}%0AMobile: ${phone}%0AProduct: ${product}`;
+  window.open(`https://wa.me/917417045371?text=${msg}`,'_blank');
+}
+</script>
+
+</body>
+</html>

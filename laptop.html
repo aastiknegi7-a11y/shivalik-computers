@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock | Shivalik Computer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
+  transition:0.4s;
+}
+
+/* ===== LIGHT MODE ===== */
+.light{
+  background:#f4f6f9;
+  color:#111;
+}
+
+.light .card,
+.light .modal-content{
+  background:white;
+  color:#111;
+}
+
+/* ===== NAVBAR ===== */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 50px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+nav ul{
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+nav a{
+  text-decoration:none;
+  color:white;
+  font-weight:500;
+}
+
+nav a:hover{
+  color:#00f5ff;
+}
+
+.toggle{
+  background:#00f5ff;
+  border:none;
+  padding:8px 16px;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* ===== SEARCH ===== */
+.search-box{
+  text-align:center;
+  margin:30px;
+}
+
+.search-box input{
+  width:300px;
+  max-width:90%;
+  padding:12px 20px;
+  border-radius:30px;
+  border:none;
+  outline:none;
+}
+
+/* ===== GRID ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  padding:20px 40px 60px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.card{
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(12px);
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
+  cursor:pointer;
+  transition:0.4s;
+  box-shadow:0 0 20px rgba(0,255,255,0.2);
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.05);
+}
+
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:contain;
+}
+
+.brand{
+  margin-top:15px;
+  font-weight:600;
+  font-size:18px;
+}
+
+/* ===== MODAL ===== */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+.modal-content{
+  background:#0f172a;
+  width:95%;
+  max-width:900px;
+  padding:25px;
+  border-radius:20px;
+  position:relative;
+  animation:zoomIn .4s ease;
+}
+
+@keyframes zoomIn{
+  from{transform:scale(.7); opacity:0}
+  to{transform:scale(1); opacity:1}
+}
+
+.close{
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* ===== SLIDER ===== */
+.slider{
+  overflow:hidden;
+  margin-top:20px;
+}
+
+.track{
+  display:flex;
+  transition:transform .4s ease;
+}
+
+.slide{
+  min-width:100%;
+  text-align:center;
+}
+
+.slide img{
+  width:100%;
+  height:320px;
+  object-fit:contain;
+  cursor:zoom-in;
+}
+
+/* ===== CTA ===== */
+.buy{
+  display:block;
+  margin:25px auto 0;
+  width:fit-content;
+  background:#25d366;
+  color:black;
+  padding:12px 26px;
+  border-radius:30px;
+  font-weight:600;
+  text-decoration:none;
+}
+
+/* ===== FLOAT WA ===== */
+.float-wa{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25d366;
+  padding:16px;
+  border-radius:50%;
+  font-size:22px;
+  text-decoration:none;
+  color:black;
+  box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  nav{
+    flex-direction:column;
+    gap:15px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h2>Shivalik Computer</h2>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="owner.html">Owner</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="toggle" onclick="toggleMode()">🌙 Mode</button>
+</nav>
+
+<div class="search-box">
+  <input type="text" id="search" placeholder="Search brand..." onkeyup="filterBrand()">
+</div>
+
+<div class="grid" id="grid">
+
+  <div class="card" onclick="openGallery('HP', hpImgs)">
+    <img src="images/hp.jpeg">
+    <div class="brand">HP Laptop</div>
+  </div>
+
+  <div class="card" onclick="openGallery('Dell', dellImgs)">
+    <img src="images/dell.jpeg">
+    <div class="brand">Dell Laptop</div>
+  </div>
+
+  <div class="card" onclick="openGallery('Lenovo', lenovoImgs)">
+    <img src="images/lenovo.jpeg">
+    <div class="brand">Lenovo Laptop</div>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+    <h2 id="title"></h2>
+
+    <div class="slider">
+      <div class="track" id="track"></div>
+    </div>
+
+    <a id="waBtn" class="buy" target="_blank">
+      Check Price on WhatsApp
+    </a>
+  </div>
+</div>
+
+<a href="https://wa.me/917417045371" class="float-wa" target="_blank">💬</a>
+
+<script>
+
+const hpImgs=["images/hp.jpeg","images/hp1.jpeg","images/hp2.jpg"];
+const dellImgs=["images/dell.jpeg","images/dell2.jpeg","images/dell3.jpeg"];
+const lenovoImgs=["images/lenovo.jpeg","images/lenovo2.jpeg","images/lenovo3.jpeg"];
+
+let index=0;
+let currentImgs=[];
+
+function toggleMode(){
+  document.body.classList.toggle("light");
+}
+
+function filterBrand(){
+  let input=document.getElementById("search").value.toLowerCase();
+  let cards=document.querySelectorAll(".card");
+
+  cards.forEach(card=>{
+    let text=card.innerText.toLowerCase();
+    card.style.display=text.includes(input)?"block":"none";
+  });
+}
+
+function openGallery(name, images){
+  document.getElementById("modal").style.display="flex";
+  document.getElementById("title").innerText=name+" Laptop";
+  const track=document.getElementById("track");
+  track.innerHTML="";
+  currentImgs=images;
+  index=0;
+
+  images.forEach(img=>{
+    track.innerHTML+=`<div class="slide"><img src="${img}"></div>`;
+  });
+
+  document.getElementById("waBtn").href=
+  `https://wa.me/917417045371?text=Hello, I want price for ${name} laptop`;
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
+
+</script>
+
+</body>
+</html>
